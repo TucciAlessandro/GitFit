@@ -4,6 +4,9 @@ import styled from "styled-components";
 import ExerciseList from "../components/ExerciseList";
 import { v4 as uuidv4 } from "uuid";
 import { Exercise } from "../GeneralTypes/GeneralTypes";
+import FilteredList from "../components/FilteredList";
+import useLocalStorage from "../hooks/useLocalStorage";
+import AddExercise from "../components/AddExercise";
 
 const exercises: Exercise[] = [
   {
@@ -25,25 +28,17 @@ const exercises: Exercise[] = [
 ];
 
 const Workout = () => {
-  const [list, setList] = useState<Exercise[]>(exercises);
-  const [input, setInput] = useState<string>("");
+  const [list, setList] = useLocalStorage<Exercise[]>("myExercises", exercises);
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-
-    setInput(value);
+  const onSubmit = (exercise: Exercise) => {
+    setList((oldList: Exercise[]) => [...oldList, exercise]);
   };
-
-  const filteredList = list.filter(({ name }) =>
-    name.toLowerCase().includes(input)
-  );
 
   return (
     <Section>
-      <div>
-        <input onChange={handleChange} value={input} />
-        <ExerciseList list={filteredList} />
-      </div>
+      <AddExercise onSubmit={onSubmit} />
+      <hr />
+      <FilteredList list={list} />
     </Section>
   );
 };
