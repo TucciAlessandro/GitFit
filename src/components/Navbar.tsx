@@ -30,7 +30,7 @@ const Navbar = () => {
   return (
     <StyledNavBar>
       <Title to="/">gitFITnerd</Title>
-      <NavBarLink to="/workout">ajdlnkajds</NavBarLink>
+      <NavBarLink to="/workout">Workout</NavBarLink>
     </StyledNavBar>
   );
 };

@@ -1,33 +1,51 @@
-import React from "react";
+import React, { useState, ChangeEvent } from "react";
 import Section from "../components/Section";
 import styled from "styled-components";
-
-interface Exercise {
-  name: string;
-  id: string;
-}
+import ExerciseList from "../components/ExerciseList";
+import { v4 as uuidv4 } from "uuid";
+import { Exercise } from "../GeneralTypes/GeneralTypes";
 
 const exercises: Exercise[] = [
   {
-    id: "adsasd",
-    name: "adsasads",
+    id: uuidv4(),
+    name: "Pull ups",
   },
   {
-    id: "asjhasfhka",
-    name: "aflghdajnfk",
+    id: uuidv4(),
+    name: "Push ups",
+  },
+  {
+    id: uuidv4(),
+    name: "Squats",
+  },
+  {
+    id: uuidv4(),
+    name: "Sit ups",
   },
 ];
 
-function Workout() {
+const Workout = () => {
+  const [list, setList] = useState<Exercise[]>(exercises);
+  const [input, setInput] = useState<string>("");
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+
+    setInput(value);
+  };
+
+  const filteredList = list.filter(({ name }) =>
+    name.toLowerCase().includes(input)
+  );
+
   return (
     <Section>
       <div>
-        <ul>
-          <li></li>
-        </ul>
+        <input onChange={handleChange} value={input} />
+        <ExerciseList list={filteredList} />
       </div>
     </Section>
   );
-}
+};
 
 export default Workout;
