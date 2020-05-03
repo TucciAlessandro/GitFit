@@ -21,10 +21,7 @@ const Separator = styled.div`
   left: 0;
   width: 100%;
   height: 20%;
-  background: #f12711;
-  background: -webkit-linear-gradient(to right, #f5af19, #f12711);
-  background: linear-gradient(to right, #f5af19, #f12711);
-
+  ${(props) => props.theme.gradient}
   z-index: -1;
   transform: skewY(3deg);
   transform-origin: top right;
