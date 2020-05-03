@@ -27,6 +27,12 @@ const exercises: Exercise[] = [
   },
 ];
 
+
+
+const Hr = styled.hr`
+  width: 100%;
+`;
+
 const Workout = () => {
   const [list, setList] = useLocalStorage<Exercise[]>("myExercises", exercises);
 
@@ -37,7 +43,7 @@ const Workout = () => {
   return (
     <Section>
       <AddExercise onSubmit={onSubmit} />
-      <hr />
+      <Hr />
       <FilteredList list={list} />
     </Section>
   );
