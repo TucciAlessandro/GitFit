@@ -27,11 +27,17 @@ const exercises: Exercise[] = [
   },
 ];
 
-
-
 const Hr = styled.hr`
   width: 100%;
 `;
+
+function deleteFromList<T>(list: T[], callback: (element: T) => boolean) {
+  return list.filter(callback);
+}
+
+function deleteExerciseFromList(list: Exercise[], idToDelete: string) {
+  return deleteFromList(list, ({ id }) => id !== idToDelete);
+}
 
 const Workout = () => {
   const [list, setList] = useLocalStorage<Exercise[]>("myExercises", exercises);
@@ -40,11 +46,15 @@ const Workout = () => {
     setList((oldList: Exercise[]) => [...oldList, exercise]);
   };
 
+  const deleteExercise = (id: string) => {
+    setList(deleteExerciseFromList(list, id));
+  };
+
   return (
     <Section>
       <AddExercise onSubmit={onSubmit} />
       <Hr />
-      <FilteredList list={list} />
+      <FilteredList handleDelete={deleteExercise} list={list} />
     </Section>
   );
 };

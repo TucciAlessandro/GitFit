@@ -12,11 +12,15 @@ const AppContainer = styled.div`
 
   overflow: auto;
 `
+const Hr = styled.hr`
+  width: 100%;
+`;
 
 function App() {
   return (
     <AppContainer>
       <Navbar />
+      <Hr />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/workout" component={Workout} />

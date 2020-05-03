@@ -19,9 +19,10 @@ const Input = styled.input`
 
 interface FilteredListProps {
   list: Exercise[];
+  handleDelete: (id: string) => void;
 }
 
-const FilteredList = ({ list }: FilteredListProps) => {
+const FilteredList = ({ list, handleDelete }: FilteredListProps) => {
   const [input, setInput] = useState<string>("");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -30,13 +31,13 @@ const FilteredList = ({ list }: FilteredListProps) => {
   };
 
   const filteredList = list.filter(({ name }) =>
-    name.toLowerCase().includes(input)
+    name.toLowerCase().includes(input.toLowerCase())
   );
 
   return (
     <>
       <Input placeholder="Search..." onChange={handleChange} value={input} />
-      <ExerciseList list={filteredList} />
+      <ExerciseList handleDelete={handleDelete} list={filteredList} />
     </>
   );
 };
