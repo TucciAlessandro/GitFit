@@ -11,6 +11,7 @@ const StyledSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 8rem;
 `;
 
 const Separator = styled.div`
@@ -20,7 +21,7 @@ const Separator = styled.div`
   right: 0;
   left: 0;
   width: 100%;
-  height: 20%;
+  height: 15%;
   ${(props) => props.theme.gradient}
   z-index: -1;
   transform: skewY(3deg);

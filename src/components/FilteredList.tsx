@@ -36,10 +36,10 @@ const FilteredList = ({ list, onAdd }: FilteredListProps) => {
   );
 
   return (
-    <>
+    <div>
       <Input placeholder="Search..." onChange={handleChange} value={input} />
       <ExerciseList onAdd={onAdd} list={filteredList} />
-    </>
+    </div>
   );
 };
 

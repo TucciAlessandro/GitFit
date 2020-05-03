@@ -3,6 +3,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useMyThemeContext } from "../context/ThemeContext";
 import styled from "styled-components";
+import Button from "./Button";
 
 const StyledNavBar = styled.nav`
   height: 3rem;
@@ -33,7 +34,7 @@ const Navbar = () => {
     <StyledNavBar>
       <Title to="/">gitFITnerd</Title>
       <NavBarLink to="/workout">Workout</NavBarLink>
-      <button onClick={toggleTheme}>Change theme</button>
+      <Button onClick={toggleTheme}>Change theme</Button>
     </StyledNavBar>
   );
 };

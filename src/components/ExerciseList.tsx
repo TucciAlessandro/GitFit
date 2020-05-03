@@ -1,5 +1,6 @@
 import React from "react";
 import { Exercise } from "../GeneralTypes/GeneralTypes";
+import List from "./List";
 
 interface ExerciseListProps {
   list: Exercise[];
@@ -8,7 +9,7 @@ interface ExerciseListProps {
 }
 
 const ExerciseList = ({ list, onDelete, onAdd }: ExerciseListProps) => (
-  <ul>
+  <List>
     {list.map(({ id, name }) => (
       <>
         <li key={id}>{name} </li>
@@ -16,7 +17,7 @@ const ExerciseList = ({ list, onDelete, onAdd }: ExerciseListProps) => (
         {onDelete && <button onClick={() => onDelete(id)}>X</button>}
       </>
     ))}
-  </ul>
+  </List>
 );
 
 export default ExerciseList;

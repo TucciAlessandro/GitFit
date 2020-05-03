@@ -24,7 +24,6 @@ function App() {
     <MyThemeContextProvider>
       <AppContainer>
         <Navbar />
-        <Hr />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/workout" component={Workout} />

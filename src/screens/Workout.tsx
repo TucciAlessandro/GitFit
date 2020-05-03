@@ -31,6 +31,12 @@ const Hr = styled.hr`
   width: 100%;
 `;
 
+const Row = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+`;
+
 function deleteFromList<T>(list: T[], callback: (element: T) => boolean) {
   return list.filter(callback);
 }
@@ -66,12 +72,17 @@ const Workout = () => {
     <Section>
       <AddExercise onSubmit={onSubmit} />
       <Hr />
-      <FilteredList
-        onAdd={addExerciseToWorkout}
-        onDelete={deleteExercise}
-        list={list}
-      />
-      <ExerciseList list={myWorkout} />
+      <Row>
+        <FilteredList
+          onAdd={addExerciseToWorkout}
+          onDelete={deleteExercise}
+          list={list}
+        />
+        <div>
+          <h4>MY WORKOUT</h4>
+          <ExerciseList list={myWorkout} />
+        </div>
+      </Row>
     </Section>
   );
 };
