@@ -3,7 +3,6 @@ import { Switch, Route } from "react-router-dom";
 import HomePage from "./screens/HomePage";
 import Navbar from "./components/Navbar";
 import Workout from "./screens/Workout";
-
 import styled from "styled-components";
 import {
   MyThemeContextProvider,
@@ -18,6 +17,7 @@ const AppContainer = styled.div`
 const Hr = styled.hr`
   width: 100%;
 `;
+
 
 function App() {
   return (

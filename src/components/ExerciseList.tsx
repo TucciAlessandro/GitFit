@@ -3,15 +3,17 @@ import { Exercise } from "../GeneralTypes/GeneralTypes";
 
 interface ExerciseListProps {
   list: Exercise[];
-  handleDelete: (id: string) => void;
+  onDelete?: (id: string) => void;
+  onAdd?: (id: string) => void;
 }
 
-const ExerciseList = ({ list, handleDelete }: ExerciseListProps) => (
+const ExerciseList = ({ list, onDelete, onAdd }: ExerciseListProps) => (
   <ul>
     {list.map(({ id, name }) => (
       <>
         <li key={id}>{name} </li>
-        <button onClick={() => handleDelete(id)}>X</button>
+        {onAdd && <button onClick={() => onAdd(id)}>Add</button>}
+        {onDelete && <button onClick={() => onDelete(id)}>X</button>}
       </>
     ))}
   </ul>

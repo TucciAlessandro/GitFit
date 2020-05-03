@@ -20,7 +20,7 @@ function AddExercise({ onSubmit }: AddExerciseProps) {
   const handleSubmit = () => {
     toggleIsAdding();
     const newExercise: Exercise = { name: input, id: uuidv4() };
-    onSubmit(newExercise);
+    input.trim() !== "" && onSubmit(newExercise);
     setInput("");
   };
 

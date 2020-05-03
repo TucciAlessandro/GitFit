@@ -19,10 +19,11 @@ const Input = styled.input`
 
 interface FilteredListProps {
   list: Exercise[];
-  handleDelete: (id: string) => void;
+  onDelete?: (id: string) => void;
+  onAdd?: (id: string) => void;
 }
 
-const FilteredList = ({ list, handleDelete }: FilteredListProps) => {
+const FilteredList = ({ list, onAdd }: FilteredListProps) => {
   const [input, setInput] = useState<string>("");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +38,7 @@ const FilteredList = ({ list, handleDelete }: FilteredListProps) => {
   return (
     <>
       <Input placeholder="Search..." onChange={handleChange} value={input} />
-      <ExerciseList handleDelete={handleDelete} list={filteredList} />
+      <ExerciseList onAdd={onAdd} list={filteredList} />
     </>
   );
 };

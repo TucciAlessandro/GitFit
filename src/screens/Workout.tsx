@@ -41,6 +41,12 @@ function deleteExerciseFromList(list: Exercise[], idToDelete: string) {
 
 const Workout = () => {
   const [list, setList] = useLocalStorage<Exercise[]>("myExercises", exercises);
+  const [myWorkout, setMyWorkout] = useLocalStorage<Exercise[]>("myWorkout", [
+    {
+      id: uuidv4(),
+      name: "Sit ups",
+    },
+  ]);
 
   const onSubmit = (exercise: Exercise) => {
     setList((oldList: Exercise[]) => [...oldList, exercise]);
@@ -50,11 +56,22 @@ const Workout = () => {
     setList(deleteExerciseFromList(list, id));
   };
 
+  const addExerciseToWorkout = (id: string) => {
+    const exerciseToAdd = list.find((ex) => ex.id === id);
+    deleteExercise(id);
+    setMyWorkout((oldWorkout: Exercise[]) => [...oldWorkout, exerciseToAdd]);
+  };
+
   return (
     <Section>
       <AddExercise onSubmit={onSubmit} />
       <Hr />
-      <FilteredList handleDelete={deleteExercise} list={list} />
+      <FilteredList
+        onAdd={addExerciseToWorkout}
+        onDelete={deleteExercise}
+        list={list}
+      />
+      <ExerciseList list={myWorkout} />
     </Section>
   );
 };
