@@ -1,7 +1,7 @@
 import React from "react";
 
 import { NavLink } from "react-router-dom";
-
+import { useMyThemeContext } from "../context/ThemeContext";
 import styled from "styled-components";
 
 const StyledNavBar = styled.nav`
@@ -27,10 +27,13 @@ const NavBarLink = styled(NavLink)`
 `;
 
 const Navbar = () => {
+  const { toggleTheme } = useMyThemeContext();
+
   return (
     <StyledNavBar>
       <Title to="/">gitFITnerd</Title>
       <NavBarLink to="/workout">Workout</NavBarLink>
+      <button onClick={toggleTheme}>Change theme</button>
     </StyledNavBar>
   );
 };
