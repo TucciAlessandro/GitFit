@@ -3,6 +3,15 @@ export interface Exercise {
   id: string;
 }
 
-export interface Workout {
-  name: string
+export interface Schedule {
+  name: string;
+  exercises: Exercise[];
+  id: string;
 }
+
+export interface Workout {
+  schedule: Schedule,
+  id: string,
+  date: string
+}
+

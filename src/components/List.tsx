@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const StyledList = styled.ul`
   list-style: none;
+  z-index: -1;
 `;
 
 interface ListProps {

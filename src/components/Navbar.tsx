@@ -33,7 +33,9 @@ const Navbar = () => {
   return (
     <StyledNavBar>
       <Title to="/">gitFITnerd</Title>
-      <NavBarLink to="/workout">Workout</NavBarLink>
+      <NavBarLink to="/createworkout">CreateWorkout</NavBarLink>
+      <NavBarLink to="/createSchedule">CreateSchedule</NavBarLink>
+      <NavBarLink to="/history">Saved</NavBarLink>
       <Button onClick={toggleTheme}>Change theme</Button>
     </StyledNavBar>
   );

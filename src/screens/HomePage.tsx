@@ -4,7 +4,7 @@ import Section from "../components/Section";
 const HomePage = () => {
   return (
     <Section>
-      <div>Ciao</div>   
+      <div>Welcome</div>
     </Section>
   );
 };

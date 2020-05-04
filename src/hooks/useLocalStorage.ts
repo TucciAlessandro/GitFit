@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type setValueType<T> = (value: T | Function) => void;
+export type setValueType<T> = (value: T | Function) => void;
 
 function useLocalStorage<T = any>(
   key: string,
