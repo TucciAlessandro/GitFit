@@ -3,10 +3,9 @@ import { Switch, Route } from "react-router-dom";
 import HomePage from "./screens/HomePage";
 import Navbar from "./components/Navbar";
 import Workout from "./screens/Workout";
+import SavedWorkouts from "./screens/SavedWorkouts";
 import styled from "styled-components";
-import {
-  MyThemeContextProvider,
-} from "./context/ThemeContext";
+import { MyThemeContextProvider } from "./context/ThemeContext";
 
 const AppContainer = styled.div`
   height: 100vh;
@@ -18,7 +17,6 @@ const Hr = styled.hr`
   width: 100%;
 `;
 
-
 function App() {
   return (
     <MyThemeContextProvider>
@@ -27,6 +25,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/workout" component={Workout} />
+          <Route exact path="/history" component={SavedWorkouts} />
         </Switch>
       </AppContainer>
     </MyThemeContextProvider>

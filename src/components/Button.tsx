@@ -12,6 +12,7 @@ interface StyledButtonProps {
 }
 
 const StyledButton = styled.button<StyledButtonProps>`
+  margin-left:10px;
   border: none;
   border-radius: 5px;
   width: auto;

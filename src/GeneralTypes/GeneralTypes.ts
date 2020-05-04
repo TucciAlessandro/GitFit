@@ -3,6 +3,7 @@ export interface Exercise {
   id: string;
 }
 
-export interface Workout {
-  name: string
+export interface Workouts {
+  name: string;
+  id: string; 
 }

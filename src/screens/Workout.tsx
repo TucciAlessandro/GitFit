@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react";
+import React from "react";
 import Section from "../components/Section";
 import styled from "styled-components";
 import ExerciseList from "../components/ExerciseList";
@@ -7,6 +7,8 @@ import { Exercise } from "../GeneralTypes/GeneralTypes";
 import FilteredList from "../components/FilteredList";
 import useLocalStorage from "../hooks/useLocalStorage";
 import AddExercise from "../components/AddExercise";
+import { useHistory } from "react-router-dom";
+import Button from "../components/Button";
 
 const exercises: Exercise[] = [
   {
@@ -53,7 +55,19 @@ const Workout = () => {
       name: "Sit ups",
     },
   ]);
+  const [savedWorkouts, setSavedWorkouts] = useLocalStorage<Exercise[]>(
+    "SavedWorkouts",
+    []
+  );
 
+  const history = useHistory();
+
+  const saveWorkout = () => {
+    setSavedWorkouts((oldWorkout: Exercise[]) => myWorkout);
+    setMyWorkout((oldWorkout: Exercise[]) => []);
+    setList((oldList: Exercise[]) => exercises);
+    history.push("/history");
+  };
   const onSubmit = (exercise: Exercise) => {
     setList((oldList: Exercise[]) => [...oldList, exercise]);
   };
@@ -79,6 +93,9 @@ const Workout = () => {
           list={list}
         />
         <div>
+          <Button variant="danger" onClick={saveWorkout}>
+            Save this schedule!
+          </Button>
           <h4>MY WORKOUT</h4>
           <ExerciseList list={myWorkout} />
         </div>
